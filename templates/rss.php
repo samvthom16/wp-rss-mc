@@ -70,7 +70,8 @@
 
     <?php foreach( $items as $item ):?>
     <item>
-      <guid><?php bloginfo_rss('url') ?></guid>
+      <pubDate>Fri, 19 May 2023 15:55:39 +0000</pubDate>
+      <!--guid><?php bloginfo_rss('url') ?></guid-->
       <title><![CDATA[<?php echo $item['title']; ?>]]></title>
       <description><![CDATA[<?php echo $item['desc']; ?>]]></description>
       <content:encoded><![CDATA[<?php echo $item['desc']; ?>]]></content:encoded>
