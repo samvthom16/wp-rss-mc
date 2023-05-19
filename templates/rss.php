@@ -41,7 +41,7 @@
       'desc'  => $html_posts
     ),
     array(
-      'title' => 'Religious Freedom and Freedom of Speech',
+      'title' => 'Religious Freedom & Freedom of Speech',
       'desc'  => $html_posts
     ),
   );
@@ -58,18 +58,19 @@
   <?php do_action('rss2_ns'); ?>>
 
   <channel>
-    <title><?php bloginfo_rss('name'); ?> - Feed</title>
+    <title><?php bloginfo_rss('name'); ?></title>
     <atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
     <link><?php bloginfo_rss('url') ?></link>
     <description><?php bloginfo_rss('description') ?></description>
     <lastBuildDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></lastBuildDate>
-    <language><?php echo get_option('rss_language'); ?></language>
-    <sy:updatePeriod><?php echo apply_filters( 'rss_update_period', 'hourly' ); ?></sy:updatePeriod>
-    <sy:updateFrequency><?php echo apply_filters( 'rss_update_frequency', '1' ); ?></sy:updateFrequency>
+    <language>en</language>
+    <!--sy:updatePeriod><?php echo apply_filters( 'rss_update_period', 'hourly' ); ?></sy:updatePeriod>
+    <sy:updateFrequency><?php echo apply_filters( 'rss_update_frequency', '1' ); ?></sy:updateFrequency-->
     <?php do_action('rss2_head'); ?>
 
     <?php foreach( $items as $item ):?>
     <item>
+      <guid><?php bloginfo_rss('url') ?></guid>
       <title><![CDATA[<?php echo $item['title']; ?>]]></title>
       <description><![CDATA[<?php echo $item['desc']; ?>]]></description>
       <content:encoded><![CDATA[<?php echo $item['desc']; ?>]]></content:encoded>
