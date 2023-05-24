@@ -9,8 +9,9 @@
   */
 
   $inc_files = array(
-		//'class-base.php',
-		//'class-admin-ui.php',
+		'class-base.php',
+		'class-admin-ui.php',
+    'API/API.php'
 	);
 
 	foreach( $inc_files as $inc_file ){
