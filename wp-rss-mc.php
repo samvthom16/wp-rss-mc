@@ -10,7 +10,7 @@
 
   $inc_files = array(
 		'class-base.php',
-		'class-admin-ui.php',
+		'admin-ui/admin-ui.php',
     'API/API.php'
 	);
 
