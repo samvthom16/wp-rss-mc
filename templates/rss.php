@@ -2,47 +2,108 @@
   header('Content-Type: '.feed_content_type('rss-http').'; charset='.get_option('blog_charset'), true);
   echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
 
-  ob_start();
-?>
 
-  <ul>
-    <li>
-      <p><a href='https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/?utm_source=ADF+International&utm_campaign=faaa72c17f-AA_20230505&utm_medium=email&utm_term=0_7732cae558-faaa72c17f-94953419&mc_cid=faaa72c17f&mc_eid=53c9c62c34'>In 5 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone</a></p>
-      <p>Catholic World Report</p>
-    </li>
-    <li>
-      <p><a href='https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/?mc_cid=faaa72c17f&mc_eid=53c9c62c34&utm_campaign=faaa72c17f-AA_20230505&utm_medium=email&utm_source=ADF+International&utm_term=0_7732cae558-faaa72c17f-94953419'>Burkina Faso priest describes rampant Christian persecution</a></p>
-      <p>Aletia</p>
-    </li>
-    <li>
-      <p><a href='https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/?mc_cid=faaa72c17f&mc_eid=53c9c62c34&utm_campaign=faaa72c17f-AA_20230505&utm_medium=email&utm_source=ADF+International&utm_term=0_7732cae558-faaa72c17f-94953419'>US: Montana governor signs bills protecting life, conscience rights</a></p>
-      <p>ADF US</p>
-    </li>
-    <li>
-      <p><a href='https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/?mc_cid=faaa72c17f&mc_eid=53c9c62c34&utm_campaign=faaa72c17f-AA_20230505&utm_medium=email&utm_source=ADF+International&utm_term=0_7732cae558-faaa72c17f-94953419'>Canada: Bill C-11's effect on religion remains to be seen</a></p>
-      <p>BC Catholic</p>
-    </li>
-  </ul>
-  <?php
-
-  $html_posts = ob_get_clean();
-
-  $items = array(
+  $feeds = array(
     array(
       'title' => 'Religious Freedom & Freedom of Speech',
-      'desc'  => $html_posts
+      'items' => array(
+        array(
+          'link'    => "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
+          'title'   => "In 5 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
+          'source'  => "Catholic World Report"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "Burkina Faso priest describes rampant Christian persecution",
+          'source'  => "Aletia"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "US: Montana governor signs bills protecting life, conscience rights",
+          'source'  => "ADF US"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "Canada: Bill C-11's effect on religion remains to be seen",
+          'source'  => "BC Catholic"
+        ),
+      )
     ),
     array(
       'title' => 'Marriage & Family',
-      'desc'  => $html_posts
+      'items' => array(
+        array(
+          'link'    => "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
+          'title'   => "In 5 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
+          'source'  => "Catholic World Report"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "Canada: Bill C-11's effect on religion remains to be seen",
+          'source'  => "BC Catholic"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "Burkina Faso priest describes rampant Christian persecution",
+          'source'  => "Aletia"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "US: Montana governor signs bills protecting life, conscience rights",
+          'source'  => "ADF US"
+        ),
+
+      )
     ),
     array(
       'title' => 'Sanctity of Life',
-      'desc'  => $html_posts
+      'items' => array(
+        array(
+          'link'    => "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
+          'title'   => "In 5 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
+          'source'  => "Catholic World Report"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "US: Montana governor signs bills protecting life, conscience rights",
+          'source'  => "ADF US"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "Canada: Bill C-11's effect on religion remains to be seen",
+          'source'  => "BC Catholic"
+        ),
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "Burkina Faso priest describes rampant Christian persecution",
+          'source'  => "Aletia"
+        ),
+
+
+      )
     ),
     array(
       'title' => 'Religious Freedom & Freedom of Speech',
-      'desc'  => $html_posts
+      'items' => array(
+        array(
+          'link'    => "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
+          'title'   => "In 5 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
+          'source'  => "Catholic World Report"
+        ),
+
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "US: Montana governor signs bills protecting life, conscience rights",
+          'source'  => "ADF US"
+        ),
+
+        array(
+          'link'    => "https://aleteia.org/2023/05/04/burkina-faso-priest-describes-rampant-christian-persecution/",
+          'title'   => "Burkina Faso priest describes rampant Christian persecution",
+          'source'  => "Aletia"
+        ),
+
+      )
     ),
   );
 
@@ -68,17 +129,28 @@
     <sy:updateFrequency><?php echo apply_filters( 'rss_update_frequency', '1' ); ?></sy:updateFrequency-->
     <?php do_action('rss2_head'); ?>
 
-    <?php foreach( $items as $item ):?>
+
     <item>
       <pubDate>Fri, 19 May 2023 15:55:39 +0000</pubDate>
       <!--guid><?php bloginfo_rss('url') ?></guid-->
-      <title><![CDATA[<?php echo $item['title']; ?>]]></title>
-      <description><![CDATA[<?php echo $item['desc']; ?>]]></description>
-      <content:encoded><![CDATA[<?php echo $item['desc']; ?>]]></content:encoded>
+      <title><![CDATA[<?php echo "Newsletter for 2023"; ?>]]></title>
+      <description>
+        <?php foreach( $feeds as $feed ):?>
+        <![CDATA[<h4><?php echo $feed['title']; ?></h4>]]>
+        <![CDATA[<ul>
+          <?php foreach( $feed['items'] as $item ):?>
+          <li>
+            <p><a href="<?php echo $item['link'];?>"><?php echo $item['title'];?></a></p>
+            <p><?php echo $item['source'];?></p>
+          </li>
+          <?php endforeach;?>
+        </ul>]]>
+        <?php endforeach;?>
+      </description>
       <?php rss_enclosure(); ?>
       <?php do_action('rss2_item'); ?>
     </item>
-    <?php endforeach;?>
+
 
   </channel>
 </rss>
