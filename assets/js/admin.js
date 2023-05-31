@@ -13,7 +13,7 @@ function addFeedToList( cat_key, feedData ){
     var arr_i = cat_key - 1;
     var $inputTitle = jQuery( document.createElement( 'input') );
     $inputTitle.appendTo( $list_item );
-    $inputTitle.attr( 'type', 'text' );
+    $inputTitle.attr( 'type', 'hidden' );
     $inputTitle.attr( 'name', 'feed[' + arr_i + '][items][' + list_item_id + '][' + key + ']' );
     $inputTitle.val( feedData[key] );
   }
