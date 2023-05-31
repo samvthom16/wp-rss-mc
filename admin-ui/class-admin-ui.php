@@ -65,7 +65,7 @@ class ADMIN_UI extends BASE{
 			) );
       */
 
-      wp_enqueue_script( 'wp-rss-mc', plugins_url( 'wp-rss-mc/assets/js/admin.js' ), array( 'jquery' ), null, true );
+      wp_enqueue_script( 'wp-rss-mc', plugins_url( 'wp-rss-mc/assets/js/admin.js' ), array( 'jquery' ), '1.0.1', true );
 
 		}
 	}

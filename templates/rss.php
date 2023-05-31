@@ -2,7 +2,9 @@
   header('Content-Type: '.feed_content_type('rss-http').'; charset='.get_option('blog_charset'), true);
   echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
 
+  $feeds = get_option( 'wp_rss_mc_publish_feeds' );
 
+  /*
   $feeds = array(
     array(
       'title' => 'Religious Freedom & Freedom of Speech',
@@ -106,7 +108,7 @@
       )
     ),
   );
-
+  */
 
 ?>
 <rss version="2.0"
@@ -135,17 +137,19 @@
       <!--guid><?php bloginfo_rss('url') ?></guid-->
       <title><![CDATA[<?php echo "Newsletter for 2023"; ?>]]></title>
       <description>
-        <?php foreach( $feeds as $feed ):?>
+        <?php foreach( $feeds as $feed ): if( is_array( $feed['items'] ) && count( $feed['items'] ) ):?>
         <![CDATA[<h4><?php echo $feed['title']; ?></h4>]]>
         <![CDATA[<ul>
           <?php foreach( $feed['items'] as $item ):?>
           <li>
             <p><a href="<?php echo $item['link'];?>"><?php echo $item['title'];?></a></p>
+            <?php if( isset( $item['source'] ) && $item['source'] ):?>
             <p><?php echo $item['source'];?></p>
+            <?php endif;?>
           </li>
           <?php endforeach;?>
         </ul>]]>
-        <?php endforeach;?>
+      <?php endif;endforeach;?>
       </description>
       <?php rss_enclosure(); ?>
       <?php do_action('rss2_item'); ?>

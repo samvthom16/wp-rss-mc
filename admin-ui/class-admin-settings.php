@@ -4,11 +4,24 @@ namespace WP_RSS_MC;
 
 class ADMIN_SETTINGS extends BASE{
 
+  var $categories;
+
   function __construct(){
 		$this->setNavigationTabs();
 		add_action( 'admin_menu', [$this, 'registerMenu'] );
 		//add_action( 'admin_init', [$this, 'settingsOptionsRegistration'] );
+
+    $this->setCategories( array(
+      'Religious Freedom & Freedom of Speech',
+      'Marriage & Family',
+      'Sanctity of Life',
+      'Uncategorised'  
+    ) );
+
 	}
+
+  function setCategories( $categories ){ $this->categories = $categories; }
+  function getCategories(){ return $this->categories; }
 
 
 	/**

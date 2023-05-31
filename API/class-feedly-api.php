@@ -17,6 +17,7 @@ class FEEDLY_API extends API_BASE{
 
   function getStream( $stream_id ){
     $query = urlencode( $stream_id );
+    //$url = "streams/contents?streamId=$query&hours=24";
     $url = "streams/contents?streamId=$query&hours=24";
     return $this->cachedProcessRequest( $url );
   }
