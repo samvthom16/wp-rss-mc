@@ -111,9 +111,9 @@ jQuery( "[data-behaviour~='feedly-dropdown']" ).each( function(){
         $title.html( "<a href='" + tempFeed.link + "' target='_blank'>" + tempFeed.title + "</a>" );
         $title.appendTo( $list_item );
 
-        var $desc = jQuery( document.createElement( 'p') );
-        $desc.html( data.items[i].summary.content.substr( 0, 200 ) + ' ...' );
-        $desc.appendTo( $list_item );
+        //var $desc = jQuery( document.createElement( 'p') );
+        //$desc.html( data.items[i].summary.content.substr( 0, 200 ) + ' ...' );
+        //$desc.appendTo( $list_item );
 
         var $dropdownBtn = jQuery( document.createElement( 'select' ) );
         $dropdownBtn.appendTo( $list_item );

@@ -83,7 +83,7 @@
     grid-gap: 20px;
   }
   .feed{
-    border: #CCC solid 1px;
+    border-bottom: #DDD solid 1px;
     padding: 0 10px;
     margin-bottom: 20px;
   }

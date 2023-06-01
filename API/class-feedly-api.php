@@ -7,7 +7,7 @@ class FEEDLY_API extends API_BASE{
   function getBaseURL(){ return 'https://cloud.feedly.com/v3/'; }
 
   function getHTTPHeader(){
-    $auth = get_option( 'feedly_api_key' );
+    $auth = ADMIN_SETTINGS::getInstance()->getFeedlyAPIKey(); //get_option( 'feedly_api_key' );
     return array( 'Authorization: Bearer '. $auth );
   }
 

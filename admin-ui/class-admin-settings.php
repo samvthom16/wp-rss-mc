@@ -5,20 +5,27 @@ namespace WP_RSS_MC;
 class ADMIN_SETTINGS extends BASE{
 
   var $categories;
+  var $feedlyAPIKey;
 
   function __construct(){
 		$this->setNavigationTabs();
 		add_action( 'admin_menu', [$this, 'registerMenu'] );
-		//add_action( 'admin_init', [$this, 'settingsOptionsRegistration'] );
 
-    $this->setCategories( array(
-      'Religious Freedom & Freedom of Speech',
-      'Marriage & Family',
-      'Sanctity of Life',
-      'Uncategorised'  
-    ) );
+
+    $option = get_option( 'wp_rss_mc_settings' );
+
+    $categories = array();
+    if( isset( $option['categories'] ) ){
+      $categories = explode( "\r\n", trim( $option['categories'] ) );
+    }
+    $this->setCategories( $categories );
+    
+    $this->setFeedlyAPIKey( isset( $option['feedlyAPIKey'] ) ? $option['feedlyAPIKey'] : '' );
 
 	}
+
+  function setFeedlyAPIKey( $feedlyAPIKey ){ $this->feedlyAPIKey = $feedlyAPIKey; }
+  function getFeedlyAPIKey(){ return $this->feedlyAPIKey; }
 
   function setCategories( $categories ){ $this->categories = $categories; }
   function getCategories(){ return $this->categories; }
