@@ -125,16 +125,15 @@
     <atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
     <link><?php bloginfo_rss('url') ?></link>
     <description><?php bloginfo_rss('description') ?></description>
-    <lastBuildDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></lastBuildDate>
+    <lastBuildDate><?php echo get_option( 'wp_rss_mc_publish_time' ); ?></lastBuildDate>
     <language>en</language>
-    <!--sy:updatePeriod><?php echo apply_filters( 'rss_update_period', 'hourly' ); ?></sy:updatePeriod>
-    <sy:updateFrequency><?php echo apply_filters( 'rss_update_frequency', '1' ); ?></sy:updateFrequency-->
+    <sy:updatePeriod><?php echo apply_filters( 'rss_update_period', 'hourly' ); ?></sy:updatePeriod>
+    <sy:updateFrequency><?php echo apply_filters( 'rss_update_frequency', '1' ); ?></sy:updateFrequency>
     <?php do_action('rss2_head'); ?>
-
 
     <item>
       <pubDate>Fri, 19 May 2023 15:55:39 +0000</pubDate>
-      <!--guid><?php bloginfo_rss('url') ?></guid-->
+      <guid><?php bloginfo_rss('url') ?></guid>
       <title><![CDATA[<?php echo "Newsletter for 2023"; ?>]]></title>
       <description>
         <?php foreach( $feeds as $feed ): if( is_array( $feed['items'] ) && count( $feed['items'] ) ):?>

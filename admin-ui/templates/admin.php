@@ -8,6 +8,10 @@
 
     update_option( 'wp_rss_mc_publish_feeds', $_POST[ 'feed' ] );
 
+    update_option( 'wp_rss_mc_publish_time', current_datetime()->format('D, d M Y H:i:s +0000') );
+
+    echo '<div class="notice notice-info is-dismissible"><p>RSS feed has been updated.</p></div>';
+
   }
 
   function browserData( $type, $data ){
@@ -33,9 +37,19 @@
 
   browserData( 'categories', $categories );
 
+  $rss_feed_link = get_bloginfo( 'url' ) . "/feed/mailchimp?v=" . time();
+
+
+
+
+
 ?>
 
 <div class='wrap'>
+
+  <p>Find your latest feed <a target='_blank' href='<?php echo $rss_feed_link;?>'>here</a></p>
+
+
   <div class='grid-2'>
     <div>
       <select data-behaviour='feedly-dropdown'>

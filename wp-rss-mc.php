@@ -28,3 +28,12 @@
     } );
 
    } );
+
+   function turn_off_feed_caching( $feed ) {
+    $feed->enable_cache( false );
+}
+add_action( 'wp_feed_options', 'turn_off_feed_caching' );
+
+add_filter('wp_feed_cache_transient_lifetime', function () {
+  return 900;
+});
