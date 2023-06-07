@@ -54,12 +54,11 @@ function addFeedToList( cat_key, feedData ){
 
     createInputElement( $list_item, 'title' );
     createInputElement( $list_item, 'link' );
-
+    createInputElement( $list_item, 'source' );
 
   }
 
   createListElement();
-
 }
 
 
@@ -114,24 +113,31 @@ jQuery( "[data-behaviour~='feedly-dropdown']" ).each( function(){
       for( i in data.items ){
 
         var tempFeed = {
-          title : data.items[i].title,
-          link  : data.items[i].canonicalUrl
+          title   : data.items[i].title,
+          link    : data.items[i].canonicalUrl,
+          source  : ''
         };
+
+        var source = [];
+        if( data.items[i].origin && data.items[i].origin.title ) source.push( data.items[i].origin.title );
+        if( data.items[i].author ) source.push( data.items[i].author )
+        tempFeed.source = source.join( ' | ' );
 
         var $list_item = jQuery( document.createElement( 'li' ) );
         $list_item.addClass( 'feed' );
         $list_item.appendTo( $list );
         $list_item.attr( 'data-feedtitle', tempFeed.title );
         $list_item.attr( 'data-feedlink', tempFeed.link );
+        $list_item.attr( 'data-feedsource', tempFeed.source );
         $list_item.attr( 'data-id', getIDFromTitle( tempFeed.title ) );
 
         var $title = jQuery( document.createElement( 'h4') );
         $title.html( "<a href='" + tempFeed.link + "' target='_blank'>" + tempFeed.title + "</a>" );
         $title.appendTo( $list_item );
 
-        //var $desc = jQuery( document.createElement( 'p') );
-        //$desc.html( data.items[i].summary.content.substr( 0, 200 ) + ' ...' );
-        //$desc.appendTo( $list_item );
+        var $desc = jQuery( document.createElement( 'p') );
+        $desc.html( 'Source: ' + tempFeed.source );
+        $desc.appendTo( $list_item );
 
         var $dropdownBtn = jQuery( document.createElement( 'select' ) );
         $dropdownBtn.appendTo( $list_item );
@@ -154,7 +160,8 @@ jQuery( "[data-behaviour~='feedly-dropdown']" ).each( function(){
 
           var tempFeed = {
             title : $list_item.attr( 'data-feedtitle' ),
-            link  : $list_item.attr( 'data-feedlink' )
+            link  : $list_item.attr( 'data-feedlink' ),
+            source: $list_item.attr( 'data-feedsource' ),
           };
 
           if( cat_key > 0 ){

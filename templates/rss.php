@@ -141,9 +141,9 @@
         <![CDATA[<ul>
           <?php foreach( $feed['items'] as $item ):?>
           <li>
-            <p><a href="<?php echo $item['link'];?>"><?php echo $item['title'];?></a></p>
+            <h5><a href="<?php echo $item['link'];?>"><?php echo $item['title'];?></a></h5>
             <?php if( isset( $item['source'] ) && $item['source'] ):?>
-            <p><?php echo $item['source'];?></p>
+            <p>&ndash;&nbsp;<?php echo $item['source'];?></p>
             <?php endif;?>
           </li>
           <?php endforeach;?>
