@@ -35,6 +35,23 @@ function addFeedToList( cat_key, feedData ){
     $anchor.attr( 'href', feedData.link );
     $anchor.attr( 'target', '_blank' );
 
+    var $btn = jQuery( document.createElement( 'button' ) );
+    $btn.attr( 'type', 'button' );
+    $btn.html( 'Delete' );
+    $btn.appendTo( $list_item );
+
+    $btn.click( function( ev ){
+      ev.preventDefault();
+
+      var $parent_list  = $btn.closest( 'li' ),
+        feedId          = $parent_list.attr( 'id' ),
+        $feedItem       = jQuery( '[data-id~='+ feedId + ']');
+
+      $feedItem.find('select').prop( 'selectedIndex', 0 );
+      $parent_list.remove();
+      //$btn.closest( 'li' ).remove();
+    } );
+
     createInputElement( $list_item, 'title' );
     createInputElement( $list_item, 'link' );
 
@@ -106,6 +123,7 @@ jQuery( "[data-behaviour~='feedly-dropdown']" ).each( function(){
         $list_item.appendTo( $list );
         $list_item.attr( 'data-feedtitle', tempFeed.title );
         $list_item.attr( 'data-feedlink', tempFeed.link );
+        $list_item.attr( 'data-id', getIDFromTitle( tempFeed.title ) );
 
         var $title = jQuery( document.createElement( 'h4') );
         $title.html( "<a href='" + tempFeed.link + "' target='_blank'>" + tempFeed.title + "</a>" );

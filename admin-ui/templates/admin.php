@@ -103,10 +103,24 @@
     padding: 10px 10px 10px;
     margin-bottom: 20px;
   }
+  .box li{
+    margin-bottom: 10px;
+  }
+  .box li a[href]{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc( 100% - 50px );
+  }
   .box h4{
     display: inline-block;
     margin: 0;
     border-bottom: #ccc solid 2px;
     padding-bottom: 5px;
+  }
+  .box button{
+    margin-left: 5px;
+    font-size: 10px;
   }
 </style>
