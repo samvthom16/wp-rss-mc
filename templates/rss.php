@@ -143,7 +143,7 @@
           <li style="margin:0 0 20px; padding-bottom: 15px; border-bottom: 1px #d0d0d0 solid;">
             <h5 style="color:#b3292a;"><a href="<?php echo $item['link'];?>"><?php echo $item['title'];?></a></h5>
             <?php if( isset( $item['source'] ) && $item['source'] ):?>
-            <p class="font-weight: 400; font-size: 14px; color: #5d5d5d;">&ndash;&nbsp;<?php echo $item['source'];?></p>
+            <p style="font-weight: 400; font-size: 14px; color: #5d5d5d;">&ndash;&nbsp;<?php echo $item['source'];?></p>
             <?php endif;?>
           </li>
           <?php endforeach;?>
