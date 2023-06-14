@@ -31,9 +31,9 @@
 
   $categories = WP_RSS_MC\ADMIN_SETTINGS::getInstance()->getCategories();
 
-  //echo "<pre>";
-  //print_r( $categories );
-  //echo "</pre>";
+  if( isset( $collections->errorCode ) ){
+    echo '<div class="notice notice-info is-dismissible"><p>' . $collections->errorMessage . '</p></div>';
+  }
 
   browserData( 'categories', $categories );
 

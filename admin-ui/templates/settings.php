@@ -12,7 +12,8 @@
   $fields = array(
     'feedlyAPIKey' => array(
       'type'  => 'text',
-      'label' => 'Feedly API KEY'
+      'label' => 'Feedly API KEY',
+      'help'  => '<a target="_blank" href="https://feedly.com/v3/auth/dev">Click here for new token</a>'
     ),
     'categories' => array(
       'type'  => 'textarea',
@@ -21,7 +22,7 @@
     )
   );
 
-  
+
 
 ?>
 <form method='POST'>
