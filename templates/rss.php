@@ -137,11 +137,11 @@
       <title><![CDATA[<?php echo "Newsletter for 2023"; ?>]]></title>
       <description>
         <?php foreach( $feeds as $feed ): if( is_array( $feed['items'] ) && count( $feed['items'] ) ):?>
-        <![CDATA[<div style="color:#1d4289;font-size:20px;"><?php echo $feed['title']; ?></div>]]>
-        <![CDATA[<ul style="padding:0 20px;box-shadow:0 0 11px #aba6a6;border-radius: 5px;">
+        <![CDATA[<div style="color:#1d4289;font-size:26px;text-align:center;font-weight: 600;"><?php echo $feed['title']; ?></div>]]>
+        <![CDATA[<ul style="padding:30px;box-shadow:0 0 11px #aba6a6;border-radius:5px;margin: 26px 0 40px;">
           <?php foreach( $feed['items'] as $item ):?>
-          <li style="margin:0 0 20px; padding-bottom: 15px; border-bottom: 1px #d0d0d0 solid;">
-            <h5 style="color:#b3292a;"><a href="<?php echo $item['link'];?>"><?php echo $item['title'];?></a></h5>
+          <li style="margin:0 0 20px; padding-bottom: 15px; border-bottom: 1px #d0d0d0 solid;list-style: none;">
+            <h5><a style="color: #b3292a!important;font-size: 14px;" href="<?php echo $item['link'];?>"><?php echo $item['title'];?></a></h5>
             <?php if( isset( $item['source'] ) && $item['source'] ):?>
             <p style="font-weight: 400; font-size: 14px; color: #5d5d5d;">&ndash;&nbsp;<?php echo $item['source'];?></p>
             <?php endif;?>
