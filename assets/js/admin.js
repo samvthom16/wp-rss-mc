@@ -3,17 +3,21 @@ function getIDFromTitle( title ){
   return btoa( slug ).replace(/[^a-zA-Z0-9 ]/g, '');
 }
 
+// SORTING
+jQuery( '.category-feed-list').sortable();
+
 
 function addFeedToList( cat_key, feedData ){
 
-  function createInputElement( $list_item, key ){
+  function createInputElement( $list_item, key, inputType ){
 
     var list_item_id = getIDFromTitle( feedData.title );
 
     var arr_i = cat_key - 1;
     var $inputTitle = jQuery( document.createElement( 'input') );
     $inputTitle.appendTo( $list_item );
-    $inputTitle.attr( 'type', 'hidden' );
+    $inputTitle.addClass( key );
+    $inputTitle.attr( 'type', inputType );
     $inputTitle.attr( 'name', 'feed[' + arr_i + '][items][' + list_item_id + '][' + key + ']' );
     $inputTitle.val( feedData[key] );
   }
@@ -29,11 +33,16 @@ function addFeedToList( cat_key, feedData ){
     $list_item.appendTo( '#cat-' + cat_key + ' ul' );
     $list_item.attr( 'id', list_item_id );
 
+    createInputElement( $list_item, 'title', 'text' );
+    createInputElement( $list_item, 'link', 'hidden' );
+    createInputElement( $list_item, 'source', 'text' );
+
     var $anchor = jQuery( document.createElement( 'a' ) );
     $anchor.appendTo( $list_item );
-    $anchor.html( feedData.title );
+    $anchor.html( 'View' );
     $anchor.attr( 'href', feedData.link );
     $anchor.attr( 'target', '_blank' );
+
 
     var $btn = jQuery( document.createElement( 'button' ) );
     $btn.attr( 'type', 'button' );
@@ -52,26 +61,33 @@ function addFeedToList( cat_key, feedData ){
       //$btn.closest( 'li' ).remove();
     } );
 
-    createInputElement( $list_item, 'title' );
-    createInputElement( $list_item, 'link' );
-    createInputElement( $list_item, 'source' );
+
 
   }
 
   createListElement();
 }
 
-
-
-
-
 /*
-addFeedToList( 0, {
-  'link'    : "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
-  'title'   : "In 5 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
-  'source'  : "Catholic World Report"
+addFeedToList( 1, {
+  link    : "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
+  title   : "In 5 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
+  source  : "Catholic World Report"
+} );
+
+addFeedToList( 1, {
+  link    : "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
+  title   : "In 15 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
+  source  : "Catholic World Report"
+} );
+
+addFeedToList( 1, {
+  link    : "https://www.catholicworldreport.com/2023/05/04/in-5-years-the-church-in-nicaragua-has-suffered-more-than-500-attacks-90-in-2023-alone/",
+  title   : "In 25 years the Church in Nicaragua has suffered more than 500 attacks, 90 in 2023 alone",
+  source  : "Catholic World Report"
 } );
 */
+
 
 jQuery( "[data-behaviour~='feedly-dropdown']" ).each( function(){
 

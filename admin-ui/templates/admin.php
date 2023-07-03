@@ -6,6 +6,8 @@
     //print_r( $_POST );
     //echo "</pre>";
 
+
+
     update_option( 'wp_rss_mc_publish_feeds', $_POST[ 'feed' ] );
 
     update_option( 'wp_rss_mc_publish_time', current_datetime()->format('D, d M Y H:i:s +0000') );
@@ -68,7 +70,7 @@
         <div class='box' id='cat-<?php echo $key + 1;?>'>
           <h4><?php echo $category;?></h4>
           <input type='hidden' name='feed[<?php echo $key;?>][title]' value='<?php echo $category;?>' />
-          <ul></ul>
+          <ul class='category-feed-list'></ul>
         </div>
         <?php endforeach;?>
       </form>
@@ -104,14 +106,18 @@
     margin-bottom: 20px;
   }
   .box li{
-    margin-bottom: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: #CCC solid 1px;
   }
   .box li a[href]{
+    /*
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: calc( 100% - 50px );
+    */
   }
   .box h4{
     display: inline-block;
@@ -122,5 +128,17 @@
   .box button{
     margin-left: 5px;
     font-size: 10px;
+  }
+  .box input.title{
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    padding: 0;
+  }
+  .box input.source{
+    font-size: 10px;
+    width: 100%;
+    border: none;
+    padding: 0;
   }
 </style>
