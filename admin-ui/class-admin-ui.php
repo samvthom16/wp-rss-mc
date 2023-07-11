@@ -65,7 +65,9 @@ class ADMIN_UI extends BASE{
 			) );
       */
 
-      wp_enqueue_script( 'wp-rss-mc', plugins_url( 'wp-rss-mc/assets/js/admin.js' ), array( 'jquery', 'jquery-ui-sortable' ), '1.0.7', true );
+      wp_enqueue_script( 'wp-rss-mc', plugins_url( 'wp-rss-mc/assets/js/admin.js' ), array( 'jquery', 'jquery-ui-sortable' ), '1.0.8', true );
+
+      add_thickbox();
 
 		}
 	}

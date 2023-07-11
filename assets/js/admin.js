@@ -9,6 +9,9 @@ jQuery( '.category-feed-list').sortable();
 
 function addFeedToList( cat_key, feedData ){
 
+  //console.log( cat_key );
+  //console.log( 'hello' );
+
   function createInputElement( $list_item, key, inputType ){
 
     var list_item_id = getIDFromTitle( feedData.title );
@@ -196,6 +199,33 @@ jQuery( "[data-behaviour~='feedly-dropdown']" ).each( function(){
 
 
   } )
+
+
+} );
+
+jQuery( document ).on("click", "#btn-custom-feed", function( ev ){
+
+  var feed = {
+    title   : jQuery( 'input[name="custom[title]"]' ).val(),
+    source  : jQuery( 'input[name="custom[source]"]' ).val(),
+    link    : jQuery( 'input[name="custom[link]"]' ).val()
+  };
+
+  if( feed.title && feed.source && feed.link ){
+    var category  = parseInt( jQuery( '[name="custom[category]"]' ).val() ) + 1;
+
+    addFeedToList( category, feed );
+
+    jQuery( 'input[name="custom[title]"]' ).val( '' );
+    jQuery( 'input[name="custom[source]"]' ).val( '' );
+    jQuery( 'input[name="custom[link]"]' ).val( '' );
+
+
+    jQuery( "#btn-custom-feed" ).closest( '#TB_window' ).find( '#TB_closeWindowButton' ).click();
+  }
+
+
+
 
 
 } );

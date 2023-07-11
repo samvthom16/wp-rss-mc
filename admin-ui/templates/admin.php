@@ -66,6 +66,7 @@
     <div id='rightcol'>
       <form method="POST">
         <?php submit_button( 'Publish Feed' );?>
+        <p style='margin-top:-10px;'><a href="#TB_inline?width=400&height=400&inlineId=modal-window" class="thickbox">+ Custom Feed</a></p>
         <?php foreach( $categories as $key => $category ):  ?>
         <div class='box' id='cat-<?php echo $key + 1;?>'>
           <h4><?php echo $category;?></h4>
@@ -77,6 +78,40 @@
     </div>
   </div>
 </div>
+
+
+
+<?php
+
+  $fields = array(
+    'title'   => 'Title of the article',
+    'source'  => 'Source of the article',
+    'link'    => 'Link of the article'
+  );
+
+?>
+
+<div id="modal-window" style="display:none;">
+  <?php foreach( $fields as $slug => $field ):?>
+  <p>
+    <label><?php _e( $field );?></label><br>
+    <input type='text' name='custom[<?php _e( $slug );?>]' placeholder="<?php _e( $field );?>" />
+  </p>
+  <?php endforeach;?>
+
+  <p>
+    <label>Choose Category</label><br>
+    <select name='custom[category]'>
+      <?php foreach( $categories as $key => $category ):  ?>
+      <option value='<?php echo $key;?>'><?php _e( $category );?></option>
+      <?php endforeach;?>
+    </select>
+  </p>
+  <p>
+    <button id='btn-custom-feed' type='button' class='button button-secondary'>+ Custom Feed</button>
+  </p>
+</div>
+
 
 <style>
   .grid-2{
@@ -140,5 +175,11 @@
     width: 100%;
     border: none;
     padding: 0;
+  }
+
+  #TB_ajaxContent input{
+    width: 100%;
+    padding: 5px 10px;
+    max-width: 500px;
   }
 </style>
